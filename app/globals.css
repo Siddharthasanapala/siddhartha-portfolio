@@ -16,10 +16,19 @@
 }
 
 :root.light {
-  --bg: #fafaf9;
+  /*
+   * bg/bg-elevated/border were originally #FAFAF9/#FFFFFF/#E2E8E6 — only
+   * ~1.02:1 surface contrast between page and card background, so cards
+   * were nearly invisible against the page (user-reported: "can't view
+   * each component separately"). Darkened bg/bg-elevated-2/border to give
+   * real surface separation (~1.10-1.36:1) while keeping bg-elevated at
+   * pure white and all text/on-accent contrast ratios still AA-passing
+   * (re-verified: textMuted 5.6:1, accent-warn 4.55:1 on the new bg).
+   */
+  --bg: #f2f4f3;
   --bg-elevated: #ffffff;
-  --bg-elevated-2: #f1f5f4;
-  --border: #e2e8e6;
+  --bg-elevated-2: #e7ecea;
+  --border: #d8dedc;
   --text: #10151a;
   --text-muted: #55636d;
   --accent: #059669;
@@ -32,6 +41,12 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body), sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Hero background motion (Build Spec §5) — CSS-only, low-cost, disabled under reduced motion. */

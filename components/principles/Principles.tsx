@@ -25,8 +25,12 @@ export function Principles() {
             const Icon = ICONS[principle.id];
             return (
               <StaggerItem key={principle.id} className="h-full">
-                <Card className="flex h-full flex-col gap-3">
-                  {Icon && <Icon size={24} className="text-accent" aria-hidden="true" />}
+                <Card className="group flex h-full flex-col gap-3">
+                  {Icon && (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent transition-transform duration-300 motion-safe:group-hover:rotate-6 motion-safe:group-hover:scale-110">
+                      <Icon size={22} aria-hidden="true" />
+                    </div>
+                  )}
                   <h3 className="font-display text-h3 font-bold text-text">{principle.title}</h3>
                   <p className="text-body text-text-muted">{principle.description}</p>
                 </Card>

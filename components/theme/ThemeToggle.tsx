@@ -1,13 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <button
@@ -19,9 +18,9 @@ export function ThemeToggle() {
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={theme}
-          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: -90 }}
-          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, rotate: 0 }}
-          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 90 }}
+          initial={{ opacity: 0, rotate: -90 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: 90 }}
           transition={{ duration: 0.3 }}
           className="flex"
         >

@@ -1,5 +1,6 @@
 import { projects } from "@/data/projects";
 import { Badge, Card, Container, Reveal, Section, StaggerGroup, StaggerItem } from "@/components/ui";
+import { MetricCounter } from "./MetricCounter";
 
 export function Projects() {
   const featured = projects.filter((project) => project.featured);
@@ -32,9 +33,9 @@ export function Projects() {
                     {project.metrics.map((metric) => (
                       <div
                         key={metric}
-                        className="rounded-lg border border-border bg-bg-elevated-2 px-4 py-3 font-mono text-xs text-accent-2"
+                        className="rounded-lg border border-border bg-bg-elevated-2 px-4 py-3"
                       >
-                        {metric}
+                        <MetricCounter text={metric} />
                       </div>
                     ))}
                   </div>

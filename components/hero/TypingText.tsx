@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useIsReducedMotion } from "@/lib/useIsReducedMotion";
 
 const TYPE_SPEED_MS = 45;
 const DELETE_SPEED_MS = 30;
@@ -20,7 +20,7 @@ interface TypingTextProps {
  * region would announce every keystroke.
  */
 export function TypingText({ phrases }: TypingTextProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useIsReducedMotion();
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
 

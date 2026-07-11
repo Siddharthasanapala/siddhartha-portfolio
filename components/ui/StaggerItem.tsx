@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { fadeUp, fadeUpReduced } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 
 const TAGS = {
   div: motion.div,
@@ -15,13 +15,16 @@ interface StaggerItemProps {
   as?: keyof typeof TAGS;
 }
 
-/** Child of a StaggerGroup — inherits the hidden/visible state from its parent. */
+/**
+ * Child of a StaggerGroup — inherits the hidden/visible state from its
+ * parent. See Reveal.tsx for why this doesn't branch on useReducedMotion()
+ * itself (MotionConfig in app/layout.tsx handles it, hydration-safely).
+ */
 export function StaggerItem({ children, className, as = "div" }: StaggerItemProps) {
-  const shouldReduceMotion = useReducedMotion();
   const MotionTag = TAGS[as];
 
   return (
-    <MotionTag className={className} variants={shouldReduceMotion ? fadeUpReduced : fadeUp}>
+    <MotionTag className={className} variants={fadeUp}>
       {children}
     </MotionTag>
   );

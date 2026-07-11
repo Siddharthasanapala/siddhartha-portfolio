@@ -13,15 +13,6 @@ export const fadeUp: Variants = {
   },
 };
 
-/** Reduced-motion-safe variant: keeps the opacity fade, drops the transform. */
-export const fadeUpReduced: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.6, ease: easeOut },
-  },
-};
-
 /** Parent container for staggered lists (skills tags, cards, timeline items). */
 export function staggerContainer(staggerChildren = 0.1): Variants {
   return {
@@ -32,7 +23,7 @@ export function staggerContainer(staggerChildren = 0.1): Variants {
   };
 }
 
-/** whileInView viewport config used with fadeUp/fadeUpReduced. */
+/** whileInView viewport config used with fadeUp. */
 export const viewportOnce = { once: true, margin: "-80px" } as const;
 
 /** Card hover micro-interaction: lift + shadow. */

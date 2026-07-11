@@ -6,3 +6,5 @@ export { Button } from "./Button";
 export { Reveal } from "./Reveal";
 export { StaggerGroup } from "./StaggerGroup";
 export { StaggerItem } from "./StaggerItem";
+export { ScrollProgress } from "./ScrollProgress";
+export { ScrollLineTrack } from "./ScrollLineTrack";

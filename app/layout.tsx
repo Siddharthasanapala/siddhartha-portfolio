@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
 import { ChatLauncher } from "@/components/chatbot/ChatLauncher";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { ChatWidgetProvider } from "@/components/chatbot/ChatWidgetProvider";
+import { ScrollProgress } from "@/components/ui";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -47,13 +49,24 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          <ChatWidgetProvider>
-            {children}
-            <ChatLauncher />
-            <ChatWidget />
-          </ChatWidgetProvider>
-        </ThemeProvider>
+        {/*
+         * reducedMotion="user" makes every motion component respect the OS
+         * prefers-reduced-motion setting automatically at the animation
+         * engine level, so components render the *same* variants/styles on
+         * server and client (fixing SSR/hydration mismatches) instead of
+         * each component branching on useReducedMotion() to pick a
+         * different "hidden" style object per environment.
+         */}
+        <MotionConfig reducedMotion="user">
+          <ThemeProvider>
+            <ScrollProgress />
+            <ChatWidgetProvider>
+              {children}
+              <ChatLauncher />
+              <ChatWidget />
+            </ChatWidgetProvider>
+          </ThemeProvider>
+        </MotionConfig>
       </body>
     </html>
   );
