@@ -33,3 +33,28 @@ body {
   color: var(--text);
   font-family: var(--font-body), sans-serif;
 }
+
+/* Hero background motion (Build Spec §5) — CSS-only, low-cost, disabled under reduced motion. */
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, -4%) scale(1.05);
+  }
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(circle at 20% 20%, var(--accent), transparent 60%),
+    radial-gradient(circle at 80% 30%, var(--accent-2), transparent 55%);
+  opacity: 0.12;
+  animation: hero-drift 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient {
+    animation: none;
+  }
+}

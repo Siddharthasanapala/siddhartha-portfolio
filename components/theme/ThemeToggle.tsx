@@ -1,20 +1,33 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-bg-elevated text-text hover:bg-bg-elevated-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+      className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-border bg-bg-elevated text-text hover:bg-bg-elevated-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
-      {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={theme}
+          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: -90 }}
+          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, rotate: 0 }}
+          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 90 }}
+          transition={{ duration: 0.3 }}
+          className="flex"
+        >
+          {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+        </motion.span>
+      </AnimatePresence>
     </button>
   );
 }

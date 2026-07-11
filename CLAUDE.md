@@ -28,5 +28,5 @@ Read these four files in full, in this order, before starting or resuming work. 
 - After each phase, run through that phase's acceptance checklist explicitly before moving on, and report which items pass/fail.
 
 ## Current status
-`STATUS: Phase 2 complete (all 10 static content sections built from /data, matching Build Spec §6). Ready to start Phase 3 (Motion Pass).`
+`STATUS: Phase 3 complete (entrance/stagger animations, Hero on-load intro + typing effect + background motion, hover micro-interactions, theme-toggle transition, all reduced-motion gated). Ready to start Phase 4 (Chatbot).`
 *(Update this line manually — or ask Claude Code to update it — at the end of each session so the next session picks up exactly where this one left off.)*

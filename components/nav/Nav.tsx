@@ -47,7 +47,7 @@ export function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 ${
+      className={`sticky top-0 z-50 transition-colors duration-200 ${
         scrolled
           ? "border-b border-border bg-bg-elevated"
           : "border-b border-transparent bg-bg-elevated/70 backdrop-blur"
@@ -59,7 +59,7 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-body text-text-muted hover:text-text"
+              className="text-body text-text-muted transition-colors duration-200 hover:text-text"
             >
               {link.label}
             </a>

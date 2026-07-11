@@ -12,7 +12,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-body text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent";
+  "inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-body text-sm font-medium transition duration-200 motion-safe:hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent";
 
 interface CommonProps {
   children: ReactNode;
