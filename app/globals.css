@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --bg: #0a0e12;
+  --bg-elevated: #12171d;
+  --bg-elevated-2: #171d24;
+  --border: #232b33;
+  --text: #e7ecf1;
+  --text-muted: #8b97a3;
+  --accent: #34d399;
+  --accent-2: #38bdf8;
+  --accent-warn: #f59e0b;
+  --success: #22c55e;
+  --on-accent: #000000;
+}
+
+:root.light {
+  --bg: #fafaf9;
+  --bg-elevated: #ffffff;
+  --bg-elevated-2: #f1f5f4;
+  --border: #e2e8e6;
+  --text: #10151a;
+  --text-muted: #55636d;
+  --accent: #059669;
+  --accent-2: #0284c7;
+  --accent-warn: #b45309;
+  --success: #16a34a;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+}
