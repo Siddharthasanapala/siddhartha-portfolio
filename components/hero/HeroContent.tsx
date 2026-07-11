@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui";
+import { useChatWidget } from "@/components/chatbot/ChatWidgetProvider";
 import { fadeUp, fadeUpReduced, staggerContainer } from "@/lib/motion";
 import type { Profile } from "@/types";
 import { Avatar } from "./Avatar";
@@ -14,6 +15,7 @@ import { TypingText } from "./TypingText";
  */
 export function HeroContent({ profile }: { profile: Profile }) {
   const shouldReduceMotion = useReducedMotion();
+  const { open } = useChatWidget();
   const item = shouldReduceMotion ? fadeUpReduced : fadeUp;
 
   return (
@@ -47,7 +49,7 @@ export function HeroContent({ profile }: { profile: Profile }) {
       </motion.p>
 
       <motion.div variants={item} className="flex flex-wrap gap-3 pt-2">
-        <Button variant="primary" href="#contact">
+        <Button variant="primary" onClick={open}>
           Chat with my AI assistant
         </Button>
         <Button variant="secondary" href={profile.resumeUrl} download>

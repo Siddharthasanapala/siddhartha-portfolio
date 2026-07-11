@@ -11,15 +11,15 @@ export function Skills() {
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           {skills.map((category) => (
-            <Reveal key={category.id}>
+            <Reveal key={category.id} className="h-full">
               <Card className="flex h-full flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <h3 className="font-display text-h3 font-bold text-text">{category.title}</h3>
                   <p className="text-body text-text-muted">{category.summary}</p>
                 </div>
-                <StaggerGroup className="flex flex-wrap gap-2" stagger={0.05}>
+                <StaggerGroup className="flex flex-wrap items-start gap-2" stagger={0.05}>
                   {category.tags.map((tag) => (
-                    <StaggerItem key={tag}>
+                    <StaggerItem key={tag} className="flex">
                       <Badge variant="default">{tag}</Badge>
                     </StaggerItem>
                   ))}

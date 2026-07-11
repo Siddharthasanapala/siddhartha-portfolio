@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
+import { ChatLauncher } from "@/components/chatbot/ChatLauncher";
+import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { ChatWidgetProvider } from "@/components/chatbot/ChatWidgetProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -44,7 +47,13 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ChatWidgetProvider>
+            {children}
+            <ChatLauncher />
+            <ChatWidget />
+          </ChatWidgetProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

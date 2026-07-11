@@ -2,12 +2,6 @@ import type { SkillCategory } from "@/types";
 
 export const skills: SkillCategory[] = [
   {
-    id: "backend-engineering",
-    title: "Backend Engineering",
-    summary: "Design secure REST APIs, authentication and role-based access.",
-    tags: ["Python", "Java", "Django", "Django REST Framework", "REST APIs", "JWT Authentication"],
-  },
-  {
     id: "cloud-infrastructure",
     title: "Cloud & Infrastructure",
     summary: "Provision infrastructure, networking and identity across cloud providers.",
@@ -27,6 +21,8 @@ export const skills: SkillCategory[] = [
       "Trivy",
       "Snyk",
       "OWASP ZAP",
+      "SAST",
+      "DAST",
     ],
   },
   {
@@ -45,6 +41,15 @@ export const skills: SkillCategory[] = [
       "Postman",
       "Swagger",
       "Linux",
+      "Render",
+      "Supabase",
+      "Vercel",
     ],
+  },
+  {
+    id: "backend-engineering",
+    title: "Backend Engineering",
+    summary: "Design secure REST APIs, authentication and role-based access.",
+    tags: ["Python", "Java", "Django", "Django REST Framework", "REST APIs", "JWT Authentication"],
   },
 ];

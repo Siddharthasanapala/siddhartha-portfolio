@@ -67,3 +67,15 @@ export interface CertificationItem {
   issuer: string;
   date: string;
 }
+
+export interface ChatTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export interface ContactPayload {
+  name: string;
+  email: string;
+  organization?: string;
+  message: string;
+}

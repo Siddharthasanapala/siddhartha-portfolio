@@ -1,12 +1,9 @@
-import { MapPin, MessageCircle } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { profile } from "@/data/profile";
-import { Button, Container, Reveal, Section } from "@/components/ui";
+import { Container, Reveal, Section } from "@/components/ui";
+import { OpenChatButton } from "./OpenChatButton";
 import { SocialLinks } from "./SocialLinks";
 
-/**
- * The chat launcher here is a static placeholder — the functional
- * ChatWidget/"leave a message" flow is built in Phase 4.
- */
 export function Contact() {
   return (
     <Section id="contact">
@@ -29,10 +26,7 @@ export function Contact() {
 
           <SocialLinks />
 
-          <Button variant="primary" className="w-fit gap-2">
-            <MessageCircle size={18} aria-hidden="true" />
-            Chat with Sid&rsquo;s Assistant
-          </Button>
+          <OpenChatButton />
         </Reveal>
       </Container>
     </Section>
