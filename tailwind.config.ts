@@ -7,6 +7,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        // Nav breakpoint per Build Spec §4 (desktop horizontal nav vs. mobile hamburger).
+        nav: "900px",
+      },
       colors: {
         bg: "var(--bg)",
         "bg-elevated": "var(--bg-elevated)",

@@ -1,11 +1,6 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary";
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  variant?: ButtonVariant;
-}
 
 /**
  * "primary" is a solid accent fill with --on-accent text — see Badge.tsx
@@ -16,17 +11,34 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: "border border-border bg-transparent text-text hover:bg-bg-elevated",
 };
 
-export function Button({
-  children,
-  variant = "primary",
-  className = "",
-  ...props
-}: ButtonProps) {
+const baseClasses =
+  "inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-body text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent";
+
+interface CommonProps {
+  children: ReactNode;
+  variant?: ButtonVariant;
+  className?: string;
+}
+
+type ButtonAsButton = CommonProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
+type ButtonAsAnchor = CommonProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+
+type ButtonProps = ButtonAsButton | ButtonAsAnchor;
+
+/** Renders as an <a> when `href` is provided, otherwise a <button>. */
+export function Button({ children, variant = "primary", className = "", ...rest }: ButtonProps) {
+  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
+
+  if ("href" in rest && rest.href) {
+    return (
+      <a className={classes} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button
-      className={`inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-body text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${variantClasses[variant]} ${className}`}
-      {...props}
-    >
+    <button className={classes} {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}>
       {children}
     </button>
   );
