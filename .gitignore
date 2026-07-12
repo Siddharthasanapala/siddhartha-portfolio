@@ -41,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# GitOps folder is planned to become its own independent git repo (ArgoCD source) —
+# never tracked from the app repo, to avoid nested-.git confusion.
+/gitops-deploy/
