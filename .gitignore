@@ -47,5 +47,5 @@ next-env.d.ts
 /gitops-deploy/
 
 
-#ignore .md files
-/*.md
+#ignore .md files in plan
+plan/*.md
