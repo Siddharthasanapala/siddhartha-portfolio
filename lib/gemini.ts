@@ -32,15 +32,12 @@ export type ChatReplyResult =
       args: { name: string; email: string; organization?: string; message: string };
     };
 
-// RESUME_CONTEXT only changes when /data/*.ts changes, which requires a
-// redeploy — safe to build once per process lifetime instead of on every
-// message, per the roadmap's latency requirement.
-let cachedSystemInstruction: string | undefined;
+// Rebuilt from /data/*.ts on every call rather than cached: a prior
+// per-process cache meant updates to skills/experience/resume content never
+// reached the chatbot until the server process itself restarted. Cost is
+// negligible (JSON.stringify of a few KB of structured data).
 function getSystemInstruction(): string {
-  if (!cachedSystemInstruction) {
-    cachedSystemInstruction = buildSystemPrompt(getResumeContext());
-  }
-  return cachedSystemInstruction;
+  return buildSystemPrompt(getResumeContext());
 }
 
 /**
