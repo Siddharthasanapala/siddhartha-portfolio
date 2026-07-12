@@ -13,7 +13,7 @@ export const education: EducationItem[] = [
     institution: "Municipal Junior College, Nellore",
     credential: "Intermediate (MPC)",
     period: "Jul 2018 – Mar 2020",
-    score: "CGPA 9.85",
+    score: "CGPA 9.88",
   },
   {
     id: "gvmc-high-school",

@@ -217,7 +217,7 @@ All content below is sourced from the current resume. Use verbatim or lightly re
 
 ### 6.7 Education
 - **JNTU-GV College of Engineering, Vizianagaram** — B.Tech, Information Technology, Dec 2021 – May 2025, CGPA 8.32
-- **Municipal Junior College, Nellore** — Intermediate (MPC), Jul 2018 – Mar 2020, CGPA 9.85
+- **Municipal Junior College, Nellore** — Intermediate (MPC), Jul 2018 – Mar 2020, CGPA 9.88
 - **G.V.M.C High School, Visakhapatnam** — SSC, Jun 2017 – Mar 2018, CGPA 10.0
 
 ### 6.8 Certifications
