@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 
@@ -19,7 +19,7 @@ interface RevealProps {
  */
 export function Reveal({ children, className }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       className={className}
       variants={fadeUp}
       initial="hidden"
@@ -27,6 +27,6 @@ export function Reveal({ children, className }: RevealProps) {
       viewport={viewportOnce}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

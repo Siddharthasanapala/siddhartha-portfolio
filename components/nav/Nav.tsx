@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
@@ -122,7 +122,7 @@ export function Nav() {
                 >
                   {link.label}
                   {isActive && (
-                    <motion.span
+                    <m.span
                       layoutId="nav-underline"
                       className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-accent"
                       transition={
@@ -165,7 +165,7 @@ export function Nav() {
       <AnimatePresence>
         {open && (
           <div className="nav:hidden">
-            <motion.button
+            <m.button
               type="button"
               aria-label="Close navigation menu"
               onClick={close}
@@ -175,7 +175,7 @@ export function Nav() {
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-40 bg-bg/80 backdrop-blur-sm"
             />
-            <motion.div
+            <m.div
               id="mobile-nav"
               ref={panelRef}
               role="dialog"
@@ -222,7 +222,7 @@ export function Nav() {
               <div className="mt-auto">
                 <ThemeToggle />
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>

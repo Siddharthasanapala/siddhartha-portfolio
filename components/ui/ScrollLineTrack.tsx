@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useScroll } from "framer-motion";
+import { m, useScroll } from "framer-motion";
 import { useIsReducedMotion } from "@/lib/useIsReducedMotion";
 
 interface ScrollLineTrackProps {
@@ -26,7 +26,7 @@ export function ScrollLineTrack({
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       {!shouldReduceMotion && (
-        <motion.div
+        <m.div
           aria-hidden="true"
           className={`absolute left-0 top-0 w-px origin-top ${lineClassName}`}
           style={{ scaleY: scrollYProgress, height: "100%" }}

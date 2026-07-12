@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
@@ -16,7 +16,7 @@ export function ThemeToggle() {
       className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-border bg-bg-elevated text-text hover:bg-bg-elevated-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
       <AnimatePresence mode="wait" initial={false}>
-        <motion.span
+        <m.span
           key={theme}
           initial={{ opacity: 0, rotate: -90 }}
           animate={{ opacity: 1, rotate: 0 }}
@@ -25,7 +25,7 @@ export function ThemeToggle() {
           className="flex"
         >
           {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </button>
   );

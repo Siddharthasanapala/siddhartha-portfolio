@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 import { fadeUp } from "@/lib/motion";
 
 const TAGS = {
-  div: motion.div,
-  li: motion.li,
+  div: m.div,
+  li: m.li,
 } as const;
 
 interface StaggerItemProps {

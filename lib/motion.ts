@@ -13,6 +13,21 @@ export const fadeUp: Variants = {
   },
 };
 
+/**
+ * y-only entrance (no opacity dip) — for the Hero name specifically, which
+ * Lighthouse identifies as the LCP element. Animating its opacity from 0
+ * delayed LCP by ~1.3s (Chrome can't count it as "painted" until Framer
+ * Motion hydrates and fades it in); sliding an already-opaque element up
+ * doesn't have that penalty since real pixels are visible from frame one.
+ */
+export const slideUp: Variants = {
+  hidden: { y: 24 },
+  visible: {
+    y: 0,
+    transition: { duration: 0.6, ease: easeOut },
+  },
+};
+
 /** Parent container for staggered lists (skills tags, cards, timeline items). */
 export function staggerContainer(staggerChildren = 0.1): Variants {
   return {

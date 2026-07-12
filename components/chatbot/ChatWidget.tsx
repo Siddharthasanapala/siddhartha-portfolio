@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { Send, X } from "lucide-react";
 import { useChatWidget } from "./ChatWidgetProvider";
 import { ChatMessage } from "./ChatMessage";
@@ -72,7 +72,7 @@ export function ChatWidget() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           id="chat-widget-panel"
           ref={panelRef}
           role="dialog"
@@ -174,7 +174,7 @@ export function ChatWidget() {
               </button>
             </>
           )}
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

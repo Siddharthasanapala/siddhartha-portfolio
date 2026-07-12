@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 import { staggerContainer, viewportOnce } from "@/lib/motion";
 
 const TAGS = {
-  div: motion.div,
-  ol: motion.ol,
-  ul: motion.ul,
+  div: m.div,
+  ol: m.ol,
+  ul: m.ul,
 } as const;
 
 interface StaggerGroupProps {
