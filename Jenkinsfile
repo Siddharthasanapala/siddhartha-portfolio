@@ -3,6 +3,8 @@
 // GitOps repo (gitops-deployment). ArgoCD picks up that commit on its own;
 // see DEPLOYMENT.md §3 for why the CI and CD loops are deliberately
 // independent.
+
+//groovy script with shell commands to build, test, and push a docker image, then bump the tag in the GitOps repo
 pipeline {
   agent none
 
