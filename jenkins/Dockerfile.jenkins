@@ -1,0 +1,40 @@
+# Custom Jenkins controller image for this project's CI (DEPLOYMENT.md Phase 9).
+#
+# Deviates from the plan's literal "click through the setup wizard" step:
+# plugins and the one admin account are baked in declaratively (via the
+# official jenkins-plugin-cli tool and a Groovy init script) instead of a
+# browser wizard, and the setup wizard itself is skipped. This is more
+# reproducible (git-tracked, rebuildable from scratch) than a manual
+# first-run flow, and is the standard "Jenkins as code" pattern for exactly
+# this kind of single-operator local CI controller.
+FROM jenkins/jenkins:lts
+
+USER root
+
+# Docker CLI only — no daemon (Docker outside of Docker / DooD, see
+# DEPLOYMENT.md §7.2). Talks to the host's Docker Desktop engine via the
+# docker.sock mounted at container-run-time.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates curl gnupg && \
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc && \
+    chmod a+r /etc/apt/keyrings/docker.asc && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo $VERSION_CODENAME) stable" \
+      > /etc/apt/sources.list.d/docker.list && \
+    apt-get update && apt-get install -y --no-install-recommends docker-ce-cli && \
+    rm -rf /var/lib/apt/lists/*
+
+# docker.sock on this host's Docker Desktop VM is root:root, mode 660
+# (verified empirically, not assumed) — the non-root `jenkins` user needs to
+# be in GID 0 to reach it, since there's no separate "docker" group here.
+RUN usermod -aG root jenkins
+
+# Skip the interactive setup wizard — see the note at the top of this file.
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/ref/plugins.txt
+
+COPY init.groovy.d/create-admin.groovy /usr/share/jenkins/ref/init.groovy.d/create-admin.groovy
+
+USER jenkins
