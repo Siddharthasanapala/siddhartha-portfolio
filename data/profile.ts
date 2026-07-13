@@ -18,7 +18,6 @@ export const profile: Profile = {
     "Engineering Secure Deployments…",
     "Improving Observability…",
     "Building Production-Ready Systems…",
-    "Verifying the CI/CD Loop…",
   ],
   resumeUrl: "/resume.pdf",
   profileImageUrl: "/profile.jpg",
