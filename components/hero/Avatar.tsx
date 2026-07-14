@@ -19,9 +19,12 @@ function getInitials(name: string): string {
 }
 
 /**
- * Falls back to an initials avatar if `src` is empty or fails to load —
- * public/profile.jpg is a placeholder until a real headshot is supplied
- * (Build Spec §6.1).
+ * Falls back to an initials avatar if `src` is empty or fails to load
+ * (Build Spec §6.1). `object-top` matters here specifically: the real
+ * headshot (public/profile-pic.png) is a tall 2:3 portrait with the face in
+ * the upper portion — a centered crop into this square frame would slice
+ * into the top of the hair, so the crop is anchored to the top of the
+ * source image instead of centered.
  */
 export function Avatar({ src, name, size = 160 }: AvatarProps) {
   const [errored, setErrored] = useState(false);
@@ -39,7 +42,7 @@ export function Avatar({ src, name, size = 160 }: AvatarProps) {
           width={size}
           height={size}
           priority
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-top"
           onError={() => setErrored(true)}
         />
       ) : (

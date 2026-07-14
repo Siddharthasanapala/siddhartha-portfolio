@@ -340,9 +340,9 @@ These hold across every layer of this project — the site, the chatbot, and bot
 
 | Doc | Covers |
 |---|---|
-| [`01-PORTFOLIO_BUILD_SPEC.md`](01-PORTFOLIO_BUILD_SPEC.md) | Design system, content bank, hard rules, acceptance checklist |
-| [`02-IMPLEMENTATION_ROADMAP.md`](02-IMPLEMENTATION_ROADMAP.md) | The phase-by-phase build order for the application itself (Phases 0–6 + sign-off) |
-| [`03-CHATBOT_SYSTEM_PROMPT.md`](03-CHATBOT_SYSTEM_PROMPT.md) | The chatbot's full behavior spec, verbatim system prompt, QA checklist |
-| [`04-DOCKER_DEPLOYMENT.md`](04-DOCKER_DEPLOYMENT.md) | The simple single-container Docker deployment target |
+| [`01-PORTFOLIO_BUILD_SPEC.md`](plan/01-PORTFOLIO_BUILD_SPEC.md) | Design system, content bank, hard rules, acceptance checklist |
+| [`02-IMPLEMENTATION_ROADMAP.md`](plan/02-IMPLEMENTATION_ROADMAP.md) | The phase-by-phase build order for the application itself (Phases 0–6 + sign-off) |
+| [`03-CHATBOT_SYSTEM_PROMPT.md`](plan/03-CHATBOT_SYSTEM_PROMPT.md) | The chatbot's full behavior spec, verbatim system prompt, QA checklist |
+| [`04-DOCKER_DEPLOYMENT.md`](plan/04-DOCKER_DEPLOYMENT.md) | The simple single-container Docker deployment target |
 | [`gitops-deploy/DEPLOYMENT.md`](gitops-deploy/DEPLOYMENT.md) | The full enterprise CI/CD deployment plan (Minikube, Jenkins, ArgoCD, Helm) — phase-by-phase, with a dedicated bottlenecks/edge-cases section |
 | [`CLAUDE.md`](CLAUDE.md) | Running session log of what's been built and verified, phase by phase |

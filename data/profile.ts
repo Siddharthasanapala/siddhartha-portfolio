@@ -20,5 +20,5 @@ export const profile: Profile = {
     "Building Production-Ready Systems…",
   ],
   resumeUrl: "/resume.pdf",
-  profileImageUrl: "/profile.jpg",
+  profileImageUrl: "/profile-pic.png",
 };
