@@ -1,23 +1,24 @@
 import { z } from "zod";
 import { sendContactEmail } from "@/lib/email";
-import { checkRateLimit } from "@/lib/rateLimit";
+import { CONTACT_RATE_LIMIT, checkRateLimit } from "@/lib/rateLimit";
 import { sanitizeText } from "@/lib/sanitize";
-
-const CONTACT_RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
 
 const contactSchema = z.object({
   name: z.string().trim().min(1).max(200),
   email: z.string().trim().email(),
   organization: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
-  // Honeypot: real visitors (and the internal chat-flow proxy) never fill this in.
+  // Honeypot: real visitors never fill this in.
   website: z.string().optional().or(z.literal("")),
 });
 
 /**
- * The only path by which any message reaches Siddhartha (chatbot spec §5) —
- * called either directly (defense in depth) or server-to-server from
- * /api/chat once the visitor confirms the contact flow.
+ * The direct "leave a message" path (chatbot spec §5) — used by ContactForm's
+ * standalone submission. The AI-driven chat flow calls sendContactEmail
+ * directly in-process instead of hitting this route over HTTP (see
+ * app/api/chat/route.ts) — an earlier version proxied through here via a
+ * server-to-server fetch, which silently dropped the visitor's real IP and
+ * caused every chat-driven send to share one rate-limit bucket.
  */
 export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
